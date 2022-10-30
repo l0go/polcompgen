@@ -1,0 +1,38 @@
+<vbox>
+	<style>
+		.button-bar {
+			width: 100%;
+			padding: 10px;
+			background-color: #dcddde;
+		}
+		.button {
+			color: black;
+		}
+		
+		.button-add {
+			background-color: #38B764;
+		}
+		.button-add:active {
+			background-color: #309e56;
+		}
+
+		.button-edit {
+			background-color: #ffcd75;
+		}
+		.button-edit:active {
+			background-color: #b39052;
+		}
+
+		.button-remove {
+			background-color: #D34949;
+		}
+		.button-remove:active {
+			background-color: #b33e3e;
+		}
+	</style>
+	<button-bar id="buttons" selectedIndex="0">
+		<button id="add" styleName="button-add" text="Add" width="33.333%" textAlign="left" horizontalAlign="left" icon="images/plus-circle.png" />
+		<button id="edit" styleName="button-edit" text="Edit" width="33.333%" textAlign="left" horizontalAlign="center" icon="images/pen-tool.png" />
+		<button id="remove" styleName="button-remove" text="Remove" width="33.333%" textAlign="left" horizontalAlign="right" icon="images/minus-circle.png" />
+	</button-bar>
+</vbox>

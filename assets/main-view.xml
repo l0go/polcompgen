@@ -1,0 +1,14 @@
+<vbox style="padding: 20px;" width="100%" height="100%">
+	<hbox horizontalAlign="center" width="100%" style="padding-bottom: 20px;">
+		<image resource="images/logo.png" width="400" height="82" />
+	</hbox>
+	<hbox width="100%" height="100%" style="spacing: 40px;">
+		<vbox>
+			<compass id="p-compass" width="400" height="400" />
+			<toolbar id="toolbar" width="400" />
+		</vbox>
+		<vbox>
+			<label text="You currently do not have any markers.\nYou can create one by pressing the green 'add' button and selecting a point on the compass." />
+		</vbox>
+	</hbox>
+</vbox>

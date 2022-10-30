@@ -1,0 +1,6 @@
+<dialog width="400" title="Marker Options">
+	<grid width="100%">
+		<label text="Marker Name" verticalAlign="center" />
+		<textfield id="name" width="100%" />
+	</grid>
+</dialog>
