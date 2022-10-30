@@ -21,6 +21,7 @@ class MainView extends VBox {
 				dialog.showDialog();
 				dialog.onFinish = (title: String) -> {
 					pCompass.addMarker(title, cursorX, cursorY);
+					noMarkers.hidden = true;
 				};
 			case (1): // Edit
 				if (!pCompass.doesMarkerExist(cursorX, cursorY)) return;
@@ -31,6 +32,7 @@ class MainView extends VBox {
 				}
 			case (2): // Remove
 				pCompass.removeMarker(cursorX, cursorY);
+				if (pCompass.markers.length == 0) noMarkers.hidden = false;
 		}
 	}
 }

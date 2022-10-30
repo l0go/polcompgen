@@ -56,7 +56,7 @@ class Compass extends Canvas {
 	}
 	
 	public function removeMarker(x: Int, y: Int) {
-		var marker = markers.filter(marker -> marker.x == x || marker.y == y)[0];
+		var marker = markers.filter(marker -> marker.x == x && marker.y == y)[0];
 		absolute.removeComponent(absolute.findComponent(marker.titleID));
 		// remove the marker from the array, basically by doing the opposite of finding it like the above
 		markers = markers.filter(marker -> (marker.x != x || marker.y != y));
