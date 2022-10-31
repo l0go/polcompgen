@@ -8,7 +8,8 @@ import haxe.ui.events.MouseEvent;
 class MainView extends VBox {
     public function new() {
         super();
-    }
+    	documentOptions.compass = pCompass;
+	}
 
 	@:bind(pCompass, MouseEvent.MOUSE_DOWN)
 	function onPress(e: MouseEvent) {

@@ -1,0 +1,6 @@
+<frame text="Document Options">
+	<button-bar id="buttons" toggle="false">
+		<button id="export-button" text="Export to PNG" width="50%" textAlign="center" horizontalAlign="left" icon="images/plus-circle.png" />
+		<button id="add-image-button" text="Add Image" width="50%" textAlign="center" horizontalAlign="left" icon="images/plus-circle.png" />
+	</button-bar>
+</frame>
