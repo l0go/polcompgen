@@ -1,4 +1,4 @@
-package custom;
+package components;
 
 import haxe.ui.Toolkit;
 import haxe.ui.components.Canvas;
@@ -9,7 +9,8 @@ class Compass extends Canvas {
 	public var cursorX: Float = -10;
 	public var cursorY: Float = -10;
 	public var markers: Array<Marker> = [];
-	var absolute: haxe.ui.containers.Absolute;
+	public var absolute: haxe.ui.containers.Absolute;
+	public var toolbar: Toolbar;
 
     public function new() {
         super();
@@ -106,6 +107,34 @@ class Compass extends Canvas {
 		return markers.filter(marker -> marker.x == x && marker.y == y).length != 0;
 	}
 	
+	@:bind(this, MouseEvent.MOUSE_DOWN)
+	function onPress(_) {
+		var cursorX = Std.int(cursorX);
+		var cursorY = Std.int(cursorY);
+		switch (toolbar.buttons.selectedIndex) {
+			case (0): // Add
+				if (doesMarkerExist(cursorX, cursorY)) return;
+				var dialog = new AddMarker();
+				dialog.showDialog();
+				dialog.onFinish = (title: String) -> {
+					addMarker(title, cursorX, cursorY);
+					markerInfoShown(false);
+				};
+			case (1): // Edit
+				if (!doesMarkerExist(cursorX, cursorY)) return;
+				var dialog = new AddMarker(false);
+				dialog.showDialog();
+				dialog.onFinish = (title: String) -> {
+					editMarker(title, cursorX, cursorY);
+				}
+			case (2): // Remove
+				removeMarker(cursorX, cursorY);
+				if (markers.length == 0) markerInfoShown(true);
+		}
+	}
+	// Should be redefined in the main view in order to hide/show the text that states how to add markers
+	public var markerInfoShown: (isShown: Bool) -> Void;
+
 	// Have cursor follow mouse
 	@:bind(this, MouseEvent.MOUSE_OVER)
 	function mousOverCallback(e: MouseEvent) {

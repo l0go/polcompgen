@@ -8,7 +8,7 @@
 			<toolbar id="toolbar" width="400" />
 		</vbox>
 		<vbox>
-			<label id="no-markers" text="You currently do not have any markers.\nYou can create one by pressing the green 'add' button and selecting a point on the compass." />
+			<label id="marker-info" text="You currently do not have any markers.\nYou can create one by pressing the green 'add' button and selecting a point on the compass." />
 			<documentbar id="document-options" width="400" />
 		</vbox>
 	</hbox>
