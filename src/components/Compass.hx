@@ -1,8 +1,12 @@
 package components;
 
 import haxe.ui.Toolkit;
+import haxe.ui.ToolkitAssets;
+import haxe.ui.dragdrop.DragManager;
+import haxe.ui.components.Image;
 import haxe.ui.components.Canvas;
 import haxe.ui.graphics.ComponentGraphics;
+import haxe.ui.containers.dialogs.Dialogs.FileInfo;
 import haxe.ui.events.MouseEvent;
 
 class Compass extends Canvas {
@@ -105,6 +109,21 @@ class Compass extends Canvas {
 
 	public function doesMarkerExist(x: Int, y: Int): Bool {
 		return markers.filter(marker -> marker.x == x && marker.y == y).length != 0;
+	}
+	
+	public function drawImage(file: FileInfo) {
+		var image = new Image();
+		DragManager.instance.registerDraggable(image, {
+			dragBounds: new haxe.ui.geom.Rectangle(0, 0, width, height)
+		});
+		ToolkitAssets.instance.imageFromBytes(file.bytes, function(imageInfo) {
+			if (imageInfo != null) {
+				try {
+					image.resource = imageInfo.data;
+				} catch (_) {}
+			}
+		});
+		absolute.addComponent(image);
 	}
 	
 	@:bind(this, MouseEvent.MOUSE_DOWN)

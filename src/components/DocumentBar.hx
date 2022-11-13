@@ -1,12 +1,9 @@
 package components;
 
-import haxe.ui.ToolkitAssets;
 import haxe.ui.containers.Frame;
-import haxe.ui.dragdrop.DragManager;
 import haxe.ui.containers.dialogs.Dialog.DialogButton;
 import haxe.ui.containers.dialogs.Dialogs;
 import haxe.ui.containers.dialogs.Dialogs.FileDialogTypes;
-import haxe.ui.components.Image;
 import haxe.ui.events.MouseEvent;
 
 @:build(haxe.ui.macros.ComponentMacros.build("assets/document-bar.xml"))
@@ -34,18 +31,7 @@ class DocumentBar extends Frame {
 	private function addImage(_) {
 		Dialogs.openFile(function(button, selectedFiles) {
 			if (button == DialogButton.OK) {
-				var image = new Image();
-				DragManager.instance.registerDraggable(image, {
-					dragBounds: new haxe.ui.geom.Rectangle(0, 0, compass.width, compass.height)
-				});
-				ToolkitAssets.instance.imageFromBytes(selectedFiles[0].bytes, function(imageInfo) {
-					if (imageInfo != null) {
-						try {
-							image.resource = imageInfo.data;
-						} catch (_) {}
-					}
-				});
-				compass.absolute.addComponent(image);
+				compass.drawImage(selectedFiles[0]);
 			}
 		}, {
 			readContents: true,
